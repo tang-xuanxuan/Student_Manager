@@ -17,8 +17,8 @@ public:
     void getStu();
     void setName(string name);
     void setId(int id);
-    string getName();
-    int getId();
+    string getStuName() const;
+    int getStuId() const;
 
 private:
     string stu_name;

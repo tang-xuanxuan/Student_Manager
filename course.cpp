@@ -10,12 +10,12 @@ void Course::setCourseId(int id)
     this->course_id = id;
 }
 
-string Course::getCourseName()
+string Course::getCourseName() const
 {
     return course_name;
 }
 
-int Course::getCourseId()
+int Course::getCourseId() const
 {
     return course_id;
 }

@@ -13,8 +13,8 @@ public:
 
     void setCourseName(string name);
     void setCourseId(int id);
-    string getCourseName();
-    int getCourseId();
+    string getCourseName() const;
+    int getCourseId() const;
 private:
     string course_name;
     int course_id;

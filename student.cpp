@@ -15,12 +15,12 @@ void Student::setId(int id)
     this->stu_id = id;
 }
 
-string Student::getName()
+string Student::getStuName() const
 {
     return stu_name;
 }
 
-int Student::getId()
+int Student::getStuId() const
 {
     return stu_id;
 }
