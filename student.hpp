@@ -3,20 +3,25 @@
 
 #include <iostream>
 #include <string>
+using namespace std;
 
 class Student
 {
 public:
-    Student(std::string name,int id)
+    Student(string name,int id)
     {
-        this->name = name;
+        this->stu_name = name;
         this->stu_id = id;
     }
 
     void getStu();
+    void setName(string name);
+    void setId(int id);
+    string getName();
+    int getId();
 
 private:
-    std::string name;
+    string stu_name;
     int stu_id;
 };
 
