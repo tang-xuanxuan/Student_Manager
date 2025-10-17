@@ -8,18 +8,18 @@ class Course
 public:
     Course() : course_name(""), course_id(0) {}  // 初始化列表赋默认值
 
-    Course(string name, int id)
+    Course(std::string name, int id)
     {
         this->course_name = name;
         this->course_id = id;
     }
 
-    void setCourseName(string name);
+    void setCourseName(std::string name);
     void setCourseId(int id);
-    string getCourseName() const;
+    std::string getCourseName() const;
     int getCourseId() const;
 private:
-    string course_name;
+    std::string course_name;
     int course_id;
 
 };

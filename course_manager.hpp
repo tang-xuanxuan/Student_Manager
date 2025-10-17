@@ -11,7 +11,7 @@ public:
     bool deleteCourse(int id);
     const Course* findCourse(int id) const;
 private:
-    map<int, Course> courses;
+    std::map<int, Course> courses;
 };
 
 #endif

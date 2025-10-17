@@ -13,7 +13,7 @@ public:
     bool deleteStudent(int id);
     const Student* findStudent(int id) const;
 private:
-    map<int, Student> students;
+    std::map<int, Student> students;
 };
 
 #endif
