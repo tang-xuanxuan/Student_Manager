@@ -16,7 +16,7 @@ bool CourseManager::deleteCourse(int id)
     return courses.erase(id) > 0;
 }
 
-Course* CourseManager::findCourse(int id)
+const Course* CourseManager::findCourse(int id) const
 {
     auto it = courses.find(id);
     if(it != courses.end())

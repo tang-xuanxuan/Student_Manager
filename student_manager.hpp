@@ -9,11 +9,11 @@ using namespace std;
 class StudentManager
 {
 public:
-    map<int, Student> students;
-private:
     bool addStudent(const Student& stu);
     bool deleteStudent(int id);
-    Student* findStudent(int id);
+    const Student* findStudent(int id) const;
+private:
+    map<int, Student> students;
 };
 
 #endif

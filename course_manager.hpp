@@ -9,7 +9,7 @@ class CourseManager
 public:
     bool addCourse(const Course& course);
     bool deleteCourse(int id);
-    Course* findCourse(int id);
+    const Course* findCourse(int id) const;
 private:
     map<int, Course> courses;
 };

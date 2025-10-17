@@ -16,7 +16,7 @@ bool StudentManager::deleteStudent(int id)
     return students.erase(id) > 0;
 }
 
-Student* StudentManager::findStudent(int id)
+const Student* StudentManager::findStudent(int id) const
 {
     auto it = students.find(id);
     if(it != students.end())
