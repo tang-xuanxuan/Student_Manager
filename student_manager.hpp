@@ -1,3 +1,6 @@
+#ifndef STUDENT_MANAGER_HPP
+#define STUDENT_MANAGER_HPP
+
 #include <map>
 #include "student.hpp"
 
@@ -12,3 +15,5 @@ private:
     bool deleteStudent(int id);
     Student* findStudent(int id);
 };
+
+#endif

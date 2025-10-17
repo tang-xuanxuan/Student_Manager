@@ -1,4 +1,4 @@
-#include "CourseManager.hpp"
+#include "course_manager.hpp"
 
 bool CourseManager::addCourse(const Course& course)
 {

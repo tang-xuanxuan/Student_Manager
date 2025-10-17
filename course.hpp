@@ -1,3 +1,6 @@
+#ifndef COURSE_HPP
+#define COURSE_HPP
+
 #include <iostream>
 
 using namespace std;
@@ -20,3 +23,5 @@ private:
     int course_id;
 
 };
+
+#endif

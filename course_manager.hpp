@@ -1,3 +1,6 @@
+#ifndef COURSE_MANAGER_HPP
+#define COURSE_MANAGER_HPP
+
 #include "course.hpp"
 #include <map>
 
@@ -10,3 +13,5 @@ public:
 private:
     map<int, Course> courses;
 };
+
+#endif
