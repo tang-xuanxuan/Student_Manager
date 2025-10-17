@@ -1,9 +1,7 @@
 #ifndef COURSE_HPP
 #define COURSE_HPP
 
-#include <iostream>
-
-using namespace std;
+#include <string>
 
 class Course
 {
