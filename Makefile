@@ -1,7 +1,7 @@
 # 可执行文件名
-TARGET = student_system
+TARGET = manager
 # 所有源文件（添加新增的 .cpp 文件，用空格分隔）
-SRCS = main.cpp student.cpp course.cpp course_manager.cpp student_manager.cpp score_manager.cpp
+SRCS = main.cpp student.cpp course.cpp course_manager.cpp student_manager.cpp score_manager.cpp manager.cpp
 # 生成的中间目标文件（.o 文件，自动推导）
 OBJS = $(SRCS:.cpp=.o)
 # 编译器和编译选项
