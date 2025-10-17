@@ -1,7 +1,7 @@
 # 可执行文件名
 TARGET = student_system
-# 所有源文件（列出所有 .cpp 文件）
-SRCS = main.cpp student.cpp 
+# 所有源文件（添加新增的 .cpp 文件，用空格分隔）
+SRCS = main.cpp student.cpp course.cpp course_manager.cpp student_manager.cpp score_manager.cpp
 # 生成的中间目标文件（.o 文件，自动推导）
 OBJS = $(SRCS:.cpp=.o)
 # 编译器和编译选项
@@ -18,6 +18,6 @@ $(TARGET): $(OBJS)
 
 # 清理中间文件和可执行文件（执行 make clean 时调用）
 clean:
-	#rm -f $(OBJS) $(TARGET)  # Linux/macOS
-    # 如果是 Windows，用：
+# rm -f $(OBJS) $(TARGET)  # Linux/macOS 系统使用此行
+# Windows 系统使用此行（删除 .o 文件和 .exe 可执行文件）
 	del /f $(OBJS) $(TARGET).exe

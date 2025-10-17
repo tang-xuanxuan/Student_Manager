@@ -8,6 +8,8 @@ using namespace std;
 class Student
 {
 public:
+    Student() : stu_name(""), stu_id(0) {}  // 初始化列表赋默认值
+    
     Student(string name,int id)
     {
         this->stu_name = name;

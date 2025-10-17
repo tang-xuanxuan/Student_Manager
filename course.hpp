@@ -8,6 +8,8 @@ using namespace std;
 class Course
 {
 public:
+    Course() : course_name(""), course_id(0) {}  // 初始化列表赋默认值
+
     Course(string name, int id)
     {
         this->course_name = name;

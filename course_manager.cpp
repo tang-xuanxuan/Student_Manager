@@ -8,7 +8,7 @@ bool CourseManager::addCourse(const Course& course)
         return false;
     }
     courses[id] = course;
-
+    return true;
 }
 
 bool CourseManager::deleteCourse(int id)

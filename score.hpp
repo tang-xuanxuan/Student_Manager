@@ -1,11 +1,11 @@
 #ifndef SCORE_HPP
 #define SCORE_HPP
 
-using namespace std;
-
 class Score
 {
 public:
+    Score() : stu_id(0), course_id(0), score(0.0) {}
+    
     Score(int s_id, int c_id, double scr)
     {
         this->stu_id = s_id;
