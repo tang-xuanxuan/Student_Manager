@@ -1,23 +1,30 @@
 # 可执行文件名
 TARGET = manager
-# 所有源文件（添加新增的 .cpp 文件，用空格分隔）
-SRCS = main.cpp student.cpp course.cpp course_manager.cpp student_manager.cpp score_manager.cpp manager.cpp
-# 生成的中间目标文件（.o 文件，自动推导）
-OBJS = $(SRCS:.cpp=.o)
-# 编译器和编译选项
+# 分离 C 和 C++ 源文件
+CXX_SRCS = main.cpp student.cpp course.cpp course_manager.cpp student_manager.cpp score_manager.cpp manager.cpp database_manager.cpp
+C_SRCS = sqlite3.c  # SQLite 是 C 代码
+# 生成目标文件
+CXX_OBJS = $(CXX_SRCS:.cpp=.o)
+C_OBJS = $(C_SRCS:.c=.o)
+OBJS = $(CXX_OBJS) $(C_OBJS)
+# 编译器
 CXX = g++
-CXXFLAGS = -Wall -g  # -Wall 显示警告，-g 支持调试
+CC = gcc  # C 编译器
+CXXFLAGS = -Wall -g
+CFLAGS = -Wall -g  # C 编译选项
 
-# 默认目标：编译生成可执行文件
+# 默认目标
 $(TARGET): $(OBJS)
 	$(CXX) $(OBJS) -o $(TARGET)
 
-# 编译每个 .cpp 生成 .o 文件（自动规则，无需手动写）
+# 编译 C++ 文件
 %.o: %.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-# 清理中间文件和可执行文件（执行 make clean 时调用）
+# 编译 C 文件（单独规则）
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+# 清理
 clean:
-# rm -f $(OBJS) $(TARGET)  # Linux/macOS 系统使用此行
-# Windows 系统使用此行（删除 .o 文件和 .exe 可执行文件）
 	del /f $(OBJS) $(TARGET).exe

@@ -5,6 +5,21 @@
 
 using namespace std;
 
+Manager::Manager() : dbMgr("student_score.db")  // 初始化数据库（指定文件名）
+{
+    if (!dbMgr.init())  // 初始化数据库表结构
+    {
+        cerr << "数据库初始化失败！程序可能无法正常运行。" << endl;
+        return;
+    }
+
+    // 从数据库加载数据到内存
+    stuMgr.loadFromDB(dbMgr);
+    courseMgr.loadFromDB(dbMgr);
+    scoreMgr.loadFromDB(dbMgr);
+    cout << "数据加载完成！" << endl;
+}
+
 void Manager::showMenu()
 {
     system("cls"); // Windows清屏，Linux/macOS用"clear"
@@ -138,7 +153,10 @@ void Manager::run()
     }
 }
 
+
+
 // 学生管理实现
+// 修改：添加学生（调用带数据库同步的方法）
 void Manager::addStudent()
 {
     int id;
@@ -149,31 +167,34 @@ void Manager::addStudent()
     cin >> name;
     
     Student stu(name, id);
-    if (stuMgr.addStudent(stu))
+    // 调用带数据库同步的添加方法
+    if (stuMgr.addStudentWithDB(stu, dbMgr))
     {
         cout << "添加成功！" << endl;
     }
     else
     {
-        cout << "添加失败，学生ID已存在！" << endl;
+        cout << "添加失败，学生ID已存在或数据库错误！" << endl;
     }
 }
 
+// 修改：删除学生（调用带数据库同步的方法）
 void Manager::deleteStudent()
 {
     int id;
     cout << "请输入要删除的学生ID: ";
     cin >> id;
     
-    if (stuMgr.deleteStudent(id))
+    if (stuMgr.deleteStudentWithDB(id, dbMgr))
     {
         cout << "删除成功！" << endl;
     }
     else
     {
-        cout << "删除失败，学生不存在！" << endl;
+        cout << "删除失败，学生不存在或数据库错误！" << endl;
     }
 }
+
 
 void Manager::findStudent()
 {
@@ -199,6 +220,7 @@ void Manager::showAllStudents()
 }
 
 // 课程管理实现
+// 修改：添加课程（调用带数据库同步的方法）
 void Manager::addCourse()
 {
     int id;
@@ -209,31 +231,33 @@ void Manager::addCourse()
     cin >> name;
     
     Course course(name, id);
-    if (courseMgr.addCourse(course))
+    if (courseMgr.addCourseWithDB(course, dbMgr))
     {
         cout << "添加成功！" << endl;
     }
     else
     {
-        cout << "添加失败，课程ID已存在！" << endl;
+        cout << "添加失败，课程ID已存在或数据库错误！" << endl;
     }
 }
 
+// 修改：删除课程（调用带数据库同步的方法）
 void Manager::deleteCourse()
 {
     int id;
     cout << "请输入要删除的课程ID: ";
     cin >> id;
     
-    if (courseMgr.deleteCourse(id))
+    if (courseMgr.deleteCourseWithDB(id, dbMgr))
     {
         cout << "删除成功！" << endl;
     }
     else
     {
-        cout << "删除失败，课程不存在！" << endl;
+        cout << "删除失败，课程不存在或数据库错误！" << endl;
     }
 }
+
 
 void Manager::findCourse()
 {
@@ -281,6 +305,7 @@ void Manager::addScore()
     }
 }
 
+// 修改：修改成绩（调用带数据库同步的方法）
 void Manager::modifyScore()
 {
     int stuId, courseId;
@@ -292,16 +317,17 @@ void Manager::modifyScore()
     cout << "请输入新成绩: ";
     cin >> newScore;
     
-    if (scoreMgr.modifyScore(stuId, courseId, newScore))
+    if (scoreMgr.modifyScoreWithDB(stuId, courseId, newScore, dbMgr))
     {
         cout << "修改成绩成功！" << endl;
     }
     else
     {
-        cout << "修改失败，未找到对应成绩！" << endl;
+        cout << "修改失败，未找到对应成绩或数据库错误！" << endl;
     }
 }
 
+// 修改：删除成绩（调用带数据库同步的方法）
 void Manager::deleteScore()
 {
     int stuId, courseId;
@@ -310,13 +336,13 @@ void Manager::deleteScore()
     cout << "请输入课程ID: ";
     cin >> courseId;
     
-    if (scoreMgr.deleteScore(stuId, courseId))
+    if (scoreMgr.deleteScoreWithDB(stuId, courseId, dbMgr))
     {
         cout << "删除成绩成功！" << endl;
     }
     else
     {
-        cout << "删除失败，未找到对应成绩！" << endl;
+        cout << "删除失败，未找到对应成绩或数据库错误！" << endl;
     }
 }
 

@@ -5,10 +5,12 @@
 #include "student_manager.hpp"
 #include "course_manager.hpp"
 #include "score_manager.hpp"
+#include "database_manager.hpp"
 
 class Manager
 {
 public:
+    Manager();
     // 显示主菜单
     void showMenu();
     
@@ -38,6 +40,7 @@ private:
     StudentManager stuMgr;   // 学生管理器
     CourseManager courseMgr; // 课程管理器
     ScoreManager scoreMgr;   // 成绩管理器
+    DatabaseManager dbMgr;   //数据库管理类   
 };
 
 #endif
